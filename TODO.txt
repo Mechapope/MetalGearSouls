@@ -15,6 +15,12 @@ NPC_THINK_PARAM_ST
 THROW_INFO_BANK
 -try to make backstabs more leniant [done?]
 
+SP_EFFECT_PARAM_ST
+-Chameleon is 1500/1010
+-test if SightSearchEnemyCutRate or HearingSearchEnemyCutRate on chamelon cast to get get enemies to stop following
+-SightSearchCutIgnore, HearingSearchCutIgnore whatever these are
+-add duration to chameleon
+
 Other
 -Make dagger backstabs OP - Weapon Param throwAtkRate = 50 [done?]
 -look into bow speed (weapon param - bowDistRate = 100?) [done?]
