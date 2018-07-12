@@ -1,0 +1,25 @@
+ATK_PARAM_ST (NPC)
+-test knockbackDist without dmgLevel at 7
+-test IgnoreNotifyMissSwingForAI
+-increase hit radii
+
+NPC_PARAM_ST
+-turn velocity 
+
+NPC_THINK_PARAM_ST
+-call help things
+-find good eye distance + X & Y angles
+-test if I should max SightTargetForgetTime (if its chasing or staring after returning home)
+-test what to do for SoundTargetForgetTime
+
+THROW_INFO_BANK
+-try to make backstabs more leniant [done?]
+
+Other
+-Make dagger backstabs OP - Weapon Param throwAtkRate = 50 [done?]
+-look into bow speed (weapon param - bowDistRate = 100?) [done?]
+-start with comp bow, camofluage, silent ring, alluring skulls. Firebombs? Other spells? [DONE]
+-arrows should be faster, go further (Bullet param - penetrate, accelOutRange = 0, accelInRange = ???, Velocity,GravityOutRange = 0, Dist)
+-Make camofluage always make you a box?
+-Check how to make enemies stop chasing (camo, alluring skull, hidden body)
+-Check if Aural Decoy functions the same as Alluring skulls
