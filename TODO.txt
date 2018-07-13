@@ -1,6 +1,4 @@
 ATK_PARAM_ST (NPC)
--test knockbackDist without dmgLevel at 7
--test IgnoreNotifyMissSwingForAI
 -increase hit radii
 
 NPC_PARAM_ST
@@ -11,13 +9,13 @@ NPC_THINK_PARAM_ST
 -find good eye distance + X & Y angles
 -test if I should max SightTargetForgetTime (if its chasing or staring after returning home)
 -test what to do for SoundTargetForgetTime
+-add a nose_dist to all enemies? depends if this means you wont be able to sneak up on them
 
 THROW_INFO_BANK
 -try to make backstabs more leniant [done?]
 
 SP_EFFECT_PARAM_ST
 -Chameleon is 1500/1010
--test if SightSearchEnemyCutRate or HearingSearchEnemyCutRate on chamelon cast to get get enemies to stop following
 -SightSearchCutIgnore, HearingSearchCutIgnore whatever these are
 -add duration to chameleon
 
@@ -29,3 +27,15 @@ Other
 -Make camofluage always make you a box?
 -Check how to make enemies stop chasing (camo, alluring skull, hidden body)
 -Check if Aural Decoy functions the same as Alluring skulls
+-spEffectIdForShooter - to create noise?
+
+
+-make arrows aggro enemies when silence ring is on (spawn alluring skull effect?)
+-replace bow with crossbow
+-make a shotgun from xbox?
+-reduce noise from walking?
+
+Weapons:
+-to aim with cbox: try setting behaviourVariationId to 4400 OR weaponcategory to 44
+-set specialAttackCategory to rando
+-rando WeaponMotionCategory

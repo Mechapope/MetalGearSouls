@@ -76,7 +76,7 @@ namespace MetalGearSouls
                     {
                         foreach (MeowDSIO.DataTypes.PARAM.ParamCellValueRef cell in paramRow.Cells)
                         {
-                            //max guard break, knockback
+                            //max guard break
                             //do everything to make enemies as difficult to fight as possible
                             if (cell.Def.Name == "guardAtkRate")
                             {
@@ -90,6 +90,12 @@ namespace MetalGearSouls
                                 Type type = cell.GetType();
                                 PropertyInfo prop = type.GetProperty("Value");
                                 prop.SetValue(cell, 7, null);
+                            }
+                            //double hitbox radius?
+                            else if (cell.Def.Name == "hit0_Radius")
+                            {
+                                PropertyInfo prop = cell.GetType().GetProperty("Value");
+                                prop.SetValue(cell, (float)(prop.GetValue(cell, null)) * 1.5, null);
                             }
                         }
                     }
@@ -109,6 +115,7 @@ namespace MetalGearSouls
                                 PropertyInfo prop = type.GetProperty("Value");
                                 prop.SetValue(cell, cell.Def.Max, null);
                             }
+                            //add nose dist?
                            
                             string[] attrsToMin = { "nearDist", "midDist", "nose_dist" };
                             if (attrsToMin.Contains(cell.Def.Name))
@@ -123,21 +130,21 @@ namespace MetalGearSouls
                             {
                                 Type type = cell.GetType();
                                 PropertyInfo prop = type.GetProperty("Value");
-                                prop.SetValue(cell, 60, null);
+                                prop.SetValue(cell, 70, null);
                             }
 
                             if (cell.Def.Name == "eye_angY")
                             {
                                 Type type = cell.GetType();
                                 PropertyInfo prop = type.GetProperty("Value");
-                                prop.SetValue(cell, 60, null);
+                                prop.SetValue(cell, 70, null);
                             }
 
                             if (cell.Def.Name == "eye_dist")
                             {
                                 Type type = cell.GetType();
                                 PropertyInfo prop = type.GetProperty("Value");
-                                prop.SetValue(cell, 6, null);
+                                prop.SetValue(cell, 7, null);
                             }
                         }
                     }
@@ -153,7 +160,7 @@ namespace MetalGearSouls
                                 //something relatively slow, but not so slow you can backstep fish super easily
                                 Type type = cell.GetType();
                                 PropertyInfo prop = type.GetProperty("Value");
-                                prop.SetValue(cell, 90, null);
+                                prop.SetValue(cell, 80, null);
                             }
                         }
                     }
@@ -163,16 +170,16 @@ namespace MetalGearSouls
                     foreach (MeowDSIO.DataTypes.PARAM.ParamRow paramRow in paramFile.Entries)
                     {
                         //change one id entry only (theif)
-                        if (paramRow.ID == 3003)
+                        if (paramRow.ID == 2003)
                         {
                             foreach (MeowDSIO.DataTypes.PARAM.ParamCellValueRef cell in paramRow.Cells)
                             {
-                                //comp bow
+                                //light crossbow
                                 if (cell.Def.Name == "equip_Subwep_Right")
                                 {
                                     Type type = cell.GetType();
                                     PropertyInfo prop = type.GetProperty("Value");
-                                    prop.SetValue(cell, 1204000, null);
+                                    prop.SetValue(cell, 1250000, null);
                                 }
                                 //sorc catalyst
                                 else if (cell.Def.Name == "equip_Subwep_Left")
@@ -181,19 +188,33 @@ namespace MetalGearSouls
                                     PropertyInfo prop = type.GetProperty("Value");
                                     prop.SetValue(cell, 1300000, null);
                                 }
-                                //feather arrows
-                                else if (cell.Def.Name == "equip_Arrow")
+                                //light bolts
+                                else if (cell.Def.Name == "equip_Bolt")
                                 {
                                     Type type = cell.GetType();
                                     PropertyInfo prop = type.GetProperty("Value");
-                                    prop.SetValue(cell, 2002000, null);
+                                    prop.SetValue(cell, 2100000, null);
                                 }
-                                //feather arrow quantity
-                                else if (cell.Def.Name == "arrowNum")
+                                //heavy bolts
+                                else if (cell.Def.Name == "equip_SubBolt")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 2101000, null);
+                                }
+                                //light bolt quantity
+                                else if (cell.Def.Name == "boltNum")
                                 {
                                     Type type = cell.GetType();
                                     PropertyInfo prop = type.GetProperty("Value");
                                     prop.SetValue(cell, 999, null);
+                                }
+                                //heavy bolt quantity
+                                else if (cell.Def.Name == "subBoltNum")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 200, null);
                                 }
                                 //start with black firebombs
                                 else if (cell.Def.Name == "item_01")
@@ -237,6 +258,13 @@ namespace MetalGearSouls
                                     PropertyInfo prop = type.GetProperty("Value");
                                     prop.SetValue(cell, 3550, null);
                                 }
+                                //enough int to use chameleon
+                                else if (cell.Def.Name == "baseMag")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 14, null);
+                                }
 
                             }
                         }
@@ -246,7 +274,8 @@ namespace MetalGearSouls
                 {
                     foreach (MeowDSIO.DataTypes.PARAM.ParamRow paramRow in paramFile.Entries)
                     {
-                        if (paramRow.ID == 502)
+                        //Light(standard?) bolt
+                        if (paramRow.ID == 600)
                         {
                             foreach (MeowDSIO.DataTypes.PARAM.ParamCellValueRef cell in paramRow.Cells)
                             {
@@ -268,15 +297,83 @@ namespace MetalGearSouls
                                     PropertyInfo prop = type.GetProperty("Value");
                                     prop.SetValue(cell, 100, null);
                                 }
+                                else if (cell.Def.Name == "HitBulletID")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 121, null);
+                                }
                             }
                         }
+                        //Heavy bolt = shotgun
+                        if (paramRow.ID == 601)
+                        {
+                            foreach (MeowDSIO.DataTypes.PARAM.ParamCellValueRef cell in paramRow.Cells)
+                            {
+                                if (cell.Def.Name == "GravityOutRange")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 10, null);
+                                }
+                                else if (cell.Def.Name == "initVellocity")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 100, null);
+                                }
+                                else if (cell.Def.Name == "maxVellocity")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 100, null);
+                                }
+                                else if (cell.Def.Name == "HitBulletID")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 121, null);
+                                }
+                                else if (cell.Def.Name == "NumShoot")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 12, null);
+                                }
+                                else if (cell.Def.Name == "ShootAngle")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, -10, null);
+                                }
+                                else if (cell.Def.Name == "ShootAngleInterval")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 6, null);
+                                }
+                                else if (cell.Def.Name == "ShootAngleXZ")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 24, null);
+                                }
+                                else if (cell.Def.Name == "ShootAngleXInterval")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 10, null);
+                                }
+                            }
+                        }
+
                     }
                 }
                 else if (paramFile.ID == "EQUIP_PARAM_WEAPON_ST")
                 {
                     foreach (MeowDSIO.DataTypes.PARAM.ParamRow paramRow in paramFile.Entries)
                     {
-                        if (paramRow.ID == 1204000)
+                        if (paramRow.ID == 1250000)
                         {
                             foreach (MeowDSIO.DataTypes.PARAM.ParamCellValueRef cell in paramRow.Cells)
                             {
@@ -288,6 +385,7 @@ namespace MetalGearSouls
                                 }
                             }
                         }
+                        //bandit knife
                         else if (paramRow.ID == 100000)
                         {
                             foreach (MeowDSIO.DataTypes.PARAM.ParamCellValueRef cell in paramRow.Cells)
@@ -297,7 +395,7 @@ namespace MetalGearSouls
                                     //backstabbu
                                     Type type = cell.GetType();
                                     PropertyInfo prop = type.GetProperty("Value");
-                                    prop.SetValue(cell, 50, null);
+                                    prop.SetValue(cell, 65, null);
                                 }
                             }
                         }
@@ -309,6 +407,7 @@ namespace MetalGearSouls
                     {
                         foreach (MeowDSIO.DataTypes.PARAM.ParamCellValueRef cell in paramRow.Cells)
                         {
+                            //add only for PC?
                             if (cell.Def.Name == "Dist")
                             {
                                 Type type = cell.GetType();
@@ -325,13 +424,13 @@ namespace MetalGearSouls
                             {
                                 Type type = cell.GetType();
                                 PropertyInfo prop = type.GetProperty("Value");
-                                prop.SetValue(cell, 0.5, null);
+                                prop.SetValue(cell, 0.75, null);
                             }
                             else if (cell.Def.Name == "lowerYRange")
                             {
                                 Type type = cell.GetType();
                                 PropertyInfo prop = type.GetProperty("Value");
-                                prop.SetValue(cell, 0.65, null);
+                                prop.SetValue(cell, 0.75, null);
                             }
                         }
                     }
