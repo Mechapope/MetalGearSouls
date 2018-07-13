@@ -11,6 +11,10 @@ NPC_THINK_PARAM_ST
 -test what to do for SoundTargetForgetTime
 -add a nose_dist to all enemies? depends if this means you wont be able to sneak up on them
 
+-call help:
+-CallHelp_ActionAdnimId = -1
+-CallHelp_ForgetTimeByArrival = 20+
+
 THROW_INFO_BANK
 -try to make backstabs more leniant [done?]
 

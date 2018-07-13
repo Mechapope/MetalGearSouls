@@ -133,19 +133,53 @@ namespace MetalGearSouls
                                 PropertyInfo prop = type.GetProperty("Value");
                                 prop.SetValue(cell, 70, null);
                             }
-
-                            if (cell.Def.Name == "eye_angY")
+                            else if (cell.Def.Name == "eye_angY")
                             {
                                 Type type = cell.GetType();
                                 PropertyInfo prop = type.GetProperty("Value");
                                 prop.SetValue(cell, 70, null);
                             }
-
-                            if (cell.Def.Name == "eye_dist")
+                            else if (cell.Def.Name == "eye_dist")
                             {
                                 Type type = cell.GetType();
                                 PropertyInfo prop = type.GetProperty("Value");
                                 prop.SetValue(cell, 7, null);
+                            }
+                            else if (cell.Def.Name == "CallHelp_ReplyBehaviorType")
+                            {
+                                Type type = cell.GetType();
+                                PropertyInfo prop = type.GetProperty("Value");
+                                prop.SetValue(cell, 1, null);
+                            }
+                            else if (cell.Def.Name == "CallHelp_ActionAnimId")
+                            {
+                                Type type = cell.GetType();
+                                PropertyInfo prop = type.GetProperty("Value");
+                                prop.SetValue(cell, -1, null);
+                            }
+                            else if (cell.Def.Name == "CallHelp_ForgetTimeByArrival")
+                            {
+                                Type type = cell.GetType();
+                                PropertyInfo prop = type.GetProperty("Value");
+                                prop.SetValue(cell, 20, null);
+                            }
+                            else if (cell.Def.Name == "CallHelp_CallValidRange")
+                            {
+                                Type type = cell.GetType();
+                                PropertyInfo prop = type.GetProperty("Value");
+                                prop.SetValue(cell, 50, null);
+                            }
+                            else if (cell.Def.Name == "CallHelp_MinWaitTime")
+                            {
+                                Type type = cell.GetType();
+                                PropertyInfo prop = type.GetProperty("Value");
+                                prop.SetValue(cell, 0, null);
+                            }
+                            else if (cell.Def.Name == "CallHelp_MaxWaitTime")
+                            {
+                                Type type = cell.GetType();
+                                PropertyInfo prop = type.GetProperty("Value");
+                                prop.SetValue(cell, 10, null);
                             }
                         }
                     }
