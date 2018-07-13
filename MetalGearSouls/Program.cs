@@ -7,6 +7,7 @@ using MeowDSIO;
 using MeowDSIO.DataFiles;
 using MeowDSIO.DataTypes;
 using System.Reflection;
+using System.IO;
 
 namespace MetalGearSouls
 {
@@ -20,13 +21,13 @@ namespace MetalGearSouls
             var gameFolder = @"C:\Users\mcouture\Desktop\DS-Modding\Dark Souls Prepare to Die Edition\DATA\";
 
             var gameparamBnds = Directory.GetFiles(gameFolder + "param\\GameParam\\", "*.parambnd")
-                .Select(p => DataFile.LoadFromFile<BND>(p, new Progress<(int, int) > ((pr) =>
+                .Select(p => DataFile.LoadFromFile<BND>(p, new Progress<(int, int)> ((pr) =>
                 {
 
                 })));
 
             var drawparamBnds = Directory.GetFiles(gameFolder + "param\\DrawParam\\", "*.parambnd")
-                .Select(p => DataFile.LoadFromFile<BND>(p, new Progress<(int, int) > ((pr) =>
+                .Select(p => DataFile.LoadFromFile<BND>(p, new Progress<(int, int)> ((pr) =>
                 {
 
                 })));
@@ -34,7 +35,7 @@ namespace MetalGearSouls
             List<BND> PARAMBNDs = gameparamBnds.Concat(drawparamBnds).ToList();
 
             var paramdefBnds = Directory.GetFiles(gameFolder + "paramdef\\", "*.paramdefbnd")
-                .Select(p => DataFile.LoadFromFile<BND>(p, new Progress<(int, int) > ((pr) =>
+                .Select(p => DataFile.LoadFromFile<BND>(p, new Progress<(int, int)> ((pr) =>
                 {
 
                 }))).ToList();
@@ -43,7 +44,7 @@ namespace MetalGearSouls
             {
                 foreach (var paramdef in paramdefBnds[i])
                 {
-                    PARAMDEF newParamDef = paramdef.ReadDataAs<PARAMDEF>(new Progress<(int, int) > ((r) =>
+                    PARAMDEF newParamDef = paramdef.ReadDataAs<PARAMDEF>(new Progress<(int, int)> ((r) =>
                     {
 
                     }));
