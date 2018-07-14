@@ -18,7 +18,7 @@ namespace MetalGearSouls
             //Load list of params into memory
             List<PARAMDEF> ParamDefs = new List<PARAMDEF>();
             List<PARAM> AllParams = new List<PARAM>();
-            var gameFolder = @"C:\Users\mcouture\Desktop\DS-Modding\Dark Souls Prepare to Die Edition\DATA\";
+            var gameFolder = @"D:\Program Files (x86)\Steam\steamapps\common\Dark Souls Prepare to Die Edition\DATA\";
 
             var gameparamBnds = Directory.GetFiles(gameFolder + "param\\GameParam\\", "*.parambnd")
                 .Select(p => DataFile.LoadFromFile<BND>(p, new Progress<(int, int)> ((pr) =>
@@ -351,7 +351,7 @@ namespace MetalGearSouls
                                     PropertyInfo prop = type.GetProperty("Value");
                                     prop.SetValue(cell, 10, null);
                                 }
-                                else if (cell.Def.Name == "initVellocity")
+                                /*else if (cell.Def.Name == "initVellocity")
                                 {
                                     Type type = cell.GetType();
                                     PropertyInfo prop = type.GetProperty("Value");
@@ -368,19 +368,19 @@ namespace MetalGearSouls
                                     Type type = cell.GetType();
                                     PropertyInfo prop = type.GetProperty("Value");
                                     prop.SetValue(cell, 121, null);
-                                }
+                                }*/
                                 else if (cell.Def.Name == "NumShoot")
                                 {
                                     Type type = cell.GetType();
                                     PropertyInfo prop = type.GetProperty("Value");
                                     prop.SetValue(cell, 12, null);
                                 }
-                                else if (cell.Def.Name == "ShootAngle")
+                                /*else if (cell.Def.Name == "ShootAngle")
                                 {
                                     Type type = cell.GetType();
                                     PropertyInfo prop = type.GetProperty("Value");
                                     prop.SetValue(cell, -10, null);
-                                }
+                                }*/
                                 else if (cell.Def.Name == "ShootAngleInterval")
                                 {
                                     Type type = cell.GetType();
@@ -466,6 +466,25 @@ namespace MetalGearSouls
                                 Type type = cell.GetType();
                                 PropertyInfo prop = type.GetProperty("Value");
                                 prop.SetValue(cell, 0.75, null);
+                            }
+                        }
+                    }
+                }
+                else if (paramFile.ID == "SP_EFFECT_PARAM_ST")
+                {
+                    foreach (MeowDSIO.DataTypes.PARAM.ParamRow paramRow in paramFile.Entries)
+                    {
+                        if (paramRow.ID == 3130 || paramRow.ID == 3140)
+                        {
+                            foreach (MeowDSIO.DataTypes.PARAM.ParamCellValueRef cell in paramRow.Cells)
+                            {
+                                //add only for PC?
+                                if (cell.Def.Name == "effectEndurance")
+                                {
+                                    Type type = cell.GetType();
+                                    PropertyInfo prop = type.GetProperty("Value");
+                                    prop.SetValue(cell, 1, null);
+                                }
                             }
                         }
                     }
